@@ -10,14 +10,14 @@
 		"Other"
 	],
 	"activationEvents": [
-		"onCommand:extension.helloWorld"
+		"onCommand:extension.openBranchFiles"
 	],
 	"main": "./out/extension.js",
 	"contributes": {
 		"commands": [
 			{
-				"command": "extension.helloWorld",
-				"title": "Hello World"
+				"command": "extension.openBranchFiles",
+				"title": "Open Branch Files"
 			}
 		]
 	},
@@ -29,12 +29,15 @@
 		"test": "npm run compile && node ./node_modules/vscode/bin/test"
 	},
 	"devDependencies": {
-		"@types/mocha": "^2.2.42",
-		"@types/node": "^10.12.21",
-		"tslint": "^5.12.1",
+		"@types/mocha": "^5.2.6",
+		"@types/node": "^12.0.0",
+		"tslint": "^5.16.0",
 		"tslint-config-airbnb": "^5.11.1",
-		"typescript": "^3.3.1",
-		"vscode": "^1.1.28"
+		"typescript": "^3.4.5",
+		"vscode": "^1.1.34"
 	},
-	"dependencies": {}
+	"dependencies": {
+		"isomorphic-git": "^0.54.2",
+		"simple-git": "^1.113.0"
+	}
 }
