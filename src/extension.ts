@@ -19,48 +19,39 @@ const checkForGitRepo = async(): Promise<string | null> => {
   return null;
 };
 
+const compileListOfFiles = (status: SimplGit.StatusResult, diff: SimplGit.DiffResult): string[] => {
+  const filesToOpen: string[] = [];
+
+  for (const unstagedFile of status.files) {
+    if (!filesToOpen.includes(unstagedFile.path)) {
+      filesToOpen.push(unstagedFile.path);
+    }
+  }
+
+  for (const committedFile of diff.files) {
+    if (!filesToOpen.includes(committedFile.file)) {
+      filesToOpen.push(committedFile.file);
+    }
+  }
+  return filesToOpen;
+};
+
 export const activate = async (context: vscode.ExtensionContext) => {
   console.log('Congratulations, your extension "open-branch-files" is now active!');
   const disposable = vscode.commands.registerCommand('extension.openBranchFiles', async () => {
     const repo = await checkForGitRepo();
     if (repo) {
-      vscode.window.showInformationMessage(`Opening branch files for folder path ${repo}`);
-      const filesToOpen: string[] = [];
-
       const git = SimplGit(repo);
       const diff = await git.diffSummary(['master...']);
       const status = await git.status();
 
-      for (const unstagedFile of status.files) {
-        if (!filesToOpen.includes(unstagedFile.path)) {
-          filesToOpen.push(unstagedFile.path);
-        }
-      }
-
-      for (const committedFile of diff.files) {
-        if (!filesToOpen.includes(committedFile.file)) {
-          filesToOpen.push(committedFile.file);
-        }
-      }
-
-      filesToOpen.map((filePath) => {
+      compileListOfFiles(status, diff).map((filePath) => {
         const uri = vscode.Uri.file(`${repo}/${filePath}`);
-        vscode.commands.executeCommand('vscode.open', uri);
-        // vscode.workspace.openTextDocument(`${repo}/${filePath}`).then(
-        //   (blah) => {
-        //     blah.save();
-        //     console.log(blah);
-        //   },
-        // );
+        vscode.window.showTextDocument(uri, { preview: false });
       });
-
     } else {
       vscode.window.showInformationMessage('You are not currently working in a Git repository');
     }
-
   });
-
   context.subscriptions.push(disposable);
 };
-
-export function deactivate() {}

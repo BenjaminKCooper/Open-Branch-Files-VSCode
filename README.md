@@ -1,6 +1,13 @@
-# open-branch-files README
+<p align="center">
+  <img width="200px" alt="Open Branch Files" src="images/icon_large.png">
+  <h2 align="center">VSCode Open Branch Files Extension</h2>
+  <h3 align="center">A VSCode Extension by Ben Cooper</h3>
+</p>
 
-This is the README for your extension "open-branch-files". After writing up a brief description, we recommend including the following sections.
+> For fast-paced ticket oriented git workflows.  Quickly open up all changed files on your current branch.
+
+
+<!-- This is the README for your extension "open-branch-files". After writing up a brief description, we recommend including the following sections. -->
 
 ## Features
 
