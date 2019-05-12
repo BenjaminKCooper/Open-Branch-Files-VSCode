@@ -43,7 +43,16 @@ export const activate = async (context: vscode.ExtensionContext) => {
         }
       }
 
-      filesToOpen.map((filePath) => { console.log(filePath); });
+      filesToOpen.map((filePath) => {
+        const uri = vscode.Uri.file(`${repo}/${filePath}`);
+        vscode.commands.executeCommand('vscode.open', uri);
+        // vscode.workspace.openTextDocument(`${repo}/${filePath}`).then(
+        //   (blah) => {
+        //     blah.save();
+        //     console.log(blah);
+        //   },
+        // );
+      });
 
     } else {
       vscode.window.showInformationMessage('You are not currently working in a Git repository');
