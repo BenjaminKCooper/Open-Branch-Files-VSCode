@@ -3,7 +3,7 @@
 	"displayName": "Open Branch Files",
 	"description": "Open up whatever files are currently being edited on your branch.",
 	"version": "0.0.1",
-	"publisher": "ben-cooper",
+	"publisher": "bcooper",
 	"repository": {},
 	"engines": {
 		"vscode": "^1.33.0"
