@@ -4,10 +4,14 @@
 	"description": "Open up whatever files are currently being edited on your branch.",
 	"version": "0.0.1",
 	"publisher": "bcooper",
-	"repository": {},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/BenjaminKCooper/Open-Branch-Files-VSCode.git"
+	},
 	"engines": {
 		"vscode": "^1.33.0"
 	},
+	"icon": "images/OpenBranchFilesIcon.png",
 	"categories": [
 		"Other"
 	],
