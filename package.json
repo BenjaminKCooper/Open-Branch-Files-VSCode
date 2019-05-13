@@ -45,6 +45,8 @@
 		"vscode": "^1.1.34"
 	},
 	"dependencies": {
+		"@types/fs-extra": "^5.1.0",
+		"fs-extra": "^8.0.0",
 		"isomorphic-git": "^0.54.2",
 		"simple-git": "^1.113.0"
 	}
