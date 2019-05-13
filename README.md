@@ -4,7 +4,7 @@
   <h3 align="center">A VSCode Extension by Ben Cooper</h3>
 </p>
 
-> For fast-paced ticket oriented git workflows.  Quickly open up all changed files on your current branch.
+> For fast-paced ticket oriented git workflows that necessitate going back-and-forth to different branches.  Quickly open up all the files that have been used on your current branch.
 
 </br>
 
