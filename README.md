@@ -4,7 +4,7 @@
   <h3 align="center">A VSCode Extension by Ben Cooper</h3>
 </p>
 
-> For fast-paced ticket oriented git workflows that necessitate going back-and-forth to different branches.  Quickly open up all the files that have been used on your current branch.
+> For ticket oriented git workflows that necessitate going back-and-forth to different branches.  Quickly open up all the files that have been used on your current branch.
 
 </br>
 
@@ -17,3 +17,5 @@
 - Git helper functions use two great libraries:
   - [isomorphic-git](https://github.com/isomorphic-git/isomorphic-git)
   - [git-js](https://github.com/steveukx/git-js)
+
+**Please Note:** this has only been tested on MacOS. Should work in a Linux environment just fine, an update will be needed for Windows. 
