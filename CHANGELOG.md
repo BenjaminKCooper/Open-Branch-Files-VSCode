@@ -4,5 +4,5 @@ All notable changes to the "open-branch-files" extension will be documented in t
 
 ## [Unreleased]
 
-## [0.0.1] - 2019-05-12
+## [0.0.1] - 2019-05-13
 - Initial release
