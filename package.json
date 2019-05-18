@@ -25,7 +25,17 @@
 				"command": "extension.openBranchFiles",
 				"title": "Open Branch Files"
 			}
-		]
+		],
+		"configuration":{
+			"title": "Open Branch Files",
+			"properties": {
+				"open-branch-files.defaultGitBranch": {
+					"type": "string",
+					"default": "master",
+					"description": "Main branch to check against.  Most git workflows use master, only change this if your workflow is known to be different"
+				}
+			}
+		}
 	},
 	"scripts": {
 		"vscode:prepublish": "webpack --mode production",
