@@ -37,23 +37,28 @@ const compileListOfFiles = (status: SimplGit.StatusResult, diff: SimplGit.DiffRe
 
 export const activate = async (context: vscode.ExtensionContext) => {
   const disposable = vscode.commands.registerCommand('extension.openBranchFiles', async () => {
+    const mainBranch = vscode.workspace.getConfiguration('open-branch-files').get('defaultGitBranch');
     const repo = await checkForGitRepo();
     if (repo) {
       const git = SimplGit(repo);
-      const diff = await git.diffSummary(['master...']);
-      const status = await git.status();
-      const listOfFiles = compileListOfFiles(status, diff);
-
-      if (status.current === 'master') {
-        vscode.window.showInformationMessage('You are currently on master');
-      } else if (listOfFiles.length === 0) {
-        vscode.window.showInformationMessage('This branch is even with master');
-      } else {
-        listOfFiles.map((filePath) => {
-          const uri = vscode.Uri.file(`${repo}/${filePath}`);
-          vscode.window.showTextDocument(uri, { preview: false });
-        });
+      try {
+        const diff = await git.diffSummary([`${mainBranch}...`]);
+        const status = await git.status();
+        const listOfFiles = compileListOfFiles(status, diff);
+        if (status.current === mainBranch) {
+          vscode.window.showInformationMessage(`You are currently on ${mainBranch}`);
+        } else if (listOfFiles.length === 0) {
+          vscode.window.showInformationMessage(`This branch is even with ${mainBranch}`);
+        } else {
+          listOfFiles.map((filePath) => {
+            const uri = vscode.Uri.file(`${repo}/${filePath}`);
+            vscode.window.showTextDocument(uri, { preview: false });
+          });
+        }
+      } catch (error) {
+        vscode.window.showInformationMessage(`You are attempting to compare against the branch ${mainBranch}, which does not exist.  Please change this in your workspace settings.`);
       }
+
     } else {
       vscode.window.showInformationMessage('You are not currently working in a Git repository');
     }
