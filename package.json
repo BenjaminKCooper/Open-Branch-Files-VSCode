@@ -2,7 +2,7 @@
 	"name": "open-branch-files",
 	"displayName": "Open Branch Files",
 	"description": "Open up whatever files are currently being edited on your branch.",
-	"version": "0.0.1",
+	"version": "0.0.2",
 	"publisher": "bcooper",
 	"repository": {
 		"type": "git",
